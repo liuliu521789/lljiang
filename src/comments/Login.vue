@@ -1,7 +1,8 @@
 <template>
     <div class="Login-conent">
+        <div class="left">S</div>
         <div class="login-box">
-           <div id="cover"></div>
+           <div id="cover">K</div>
             <div class="avatar-box">
                 <img src="../assets/mao.jpg" alt="">
             </div>
@@ -21,6 +22,8 @@
   </el-form-item>
   </el-form>
         </div>
+        <div class="right">r</div>
+
     </div>
 </template>
 <script>
@@ -49,17 +52,14 @@ export default {
         },
         login(){
             this.$refs.loginformRef.validate(async valid=>{
-                console.log(valid);
+                console.log(valid)
                if(!valid) return
              const {data:res}= await this.$http.post("login",this.LoginForm) 
-             console.log(res);
-             
-         if(res.meta.status==400)return  this.$message.error("登录失败");
-         this.$message.success("登陆成功");
-         window.sessionStorage.setItem("mytoken",res.data.token);
+             console.log(res)
+         if(res.meta.status==400) return  this.$message.error("登录失败")
+         this.$message.success("登陆成功")
+         window.sessionStorage.setItem("token",res.data.token)
          this.$router.push('/home')
-         
-         
          })
         }
       
@@ -81,6 +81,10 @@ h2{color:#fff;position: absolute;left:50%;transform: translate(-50%);top:80px;op
     height: 100%;
     border-radius: 10px;
     opacity: 0.6;
+    color:#ccc;
+    text-align: center;
+    line-height: 515px;
+    font-size: 400px;
 }
 .login-box{
     width: 400px;
@@ -95,6 +99,32 @@ h2{color:#fff;position: absolute;left:50%;transform: translate(-50%);top:80px;op
     top: 50%;
     transform: translate(-50%,-50%);
 
+}
+.left{
+     width: 400px;
+   height: 515px;
+   position: absolute;
+    left:150px;
+    top: 50%;
+    transform: translate(0,-50%);
+   opacity: 0.6;
+    color:#ccc;
+    text-align: center;
+    line-height: 515px;
+    font-size: 400px;
+}
+.right{
+     width: 400px;
+   height: 515px;
+   position: absolute;
+    right:150px;
+    top: 50%;
+    transform: translate(0,-50%);
+   opacity: 0.6;
+    color:#ccc;
+    text-align: center;
+    line-height: 515px;
+    font-size: 400px;
 }
 .avatar-box{
     width: 130px;height: 130px;border-radius: 50%;padding: 5px;
